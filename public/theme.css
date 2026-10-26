@@ -19,3 +19,19 @@
 .brand-card .card-image:after{background:linear-gradient(0deg,rgba(2,8,19,.22),rgba(2,8,19,.05) 65%,#061329)}
 .brand-card.scholars .card-image:after{background:linear-gradient(0deg,rgba(2,8,19,.25),rgba(2,8,19,.05) 65%,#061329)}
 @media(max-width:620px){.brand-card.scholars .brand-symbol{width:72px;height:72px}.brand-card.tekdid .brand-symbol{width:66px;height:66px}}
+/* Editorial refinement: less glow, stronger reading rhythm, clearer business navigation. */
+.hero{background:linear-gradient(112deg,#07101d 0%,#0a1c2c 58%,#102a35 100%)}
+.hero:before{border-color:rgba(245,198,83,.1);transform:rotate(18deg);width:560px;height:560px;right:-220px;top:-180px}
+.hero-art{border:0;box-shadow:none;outline:1px solid rgba(245,198,83,.5);outline-offset:8px}
+.hero-art img{filter:saturate(.68) contrast(1.06)}
+.art-overlay{background:linear-gradient(0deg,rgba(1,7,17,.9),rgba(1,7,17,.05) 56%),linear-gradient(100deg,rgba(2,12,26,.25),transparent 70%)}
+.brand-card{border-color:rgba(212,226,245,.14);background:#081421;padding-top:29px}
+.brand-card:after{background:linear-gradient(135deg,var(--tint),transparent 42%)}
+.brand-card .card-image img{filter:saturate(.78) contrast(1.04)}
+.brand-card .card-link{display:inline-flex;align-items:center;gap:12px;padding:8px 0;margin-right:18px;border-bottom:1px solid color-mix(in srgb,var(--accent),transparent 48%);background:none;box-shadow:none}
+.brand-card .card-link span{color:var(--accent)}
+.brand-card .card-link:hover{background:none;color:var(--accent);transform:translateX(3px)}
+.section-head{border-bottom:1px solid var(--line);padding-bottom:24px}
+.about-visual{outline:1px solid rgba(245,198,83,.42);outline-offset:7px}
+@media(max-width:620px){.hero-art{outline-offset:4px}.brand-card{padding-top:22px}.section-head{padding-bottom:18px}}
+@media(prefers-reduced-motion:reduce){.hero-art,.brand-card,.brand-card .card-link{transition:none}}
