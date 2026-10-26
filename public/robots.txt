@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://nexora-group-website.hatchable.site/sitemap.xml

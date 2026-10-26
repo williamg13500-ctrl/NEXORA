@@ -1,0 +1,21 @@
+[[config]]
+name = "lead_recipient_email"
+type = "email"
+label = "Contact form notification recipient"
+help = "Email address that should receive new enquiries submitted through the NEXORA GROUP contact form."
+required = false
+
+[[config]]
+name = "public_business_email"
+type = "email"
+label = "Public business email"
+help = "Business email displayed on the website footer and contact section."
+required = false
+
+[[config]]
+name = "business_location"
+type = "string"
+label = "Business location"
+help = "Public city/region or business address displayed on the website. Leave blank until confirmed."
+maxlength = 180
+required = false
