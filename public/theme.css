@@ -35,3 +35,67 @@
 .about-visual{outline:1px solid rgba(245,198,83,.42);outline-offset:7px}
 @media(max-width:620px){.hero-art{outline-offset:4px}.brand-card{padding-top:22px}.section-head{padding-bottom:18px}}
 @media(prefers-reduced-motion:reduce){.hero-art,.brand-card,.brand-card .card-link{transition:none}}
+/* V12 — make the portfolio feel like a finished, lived-in brand world. */
+:root{--gold:#e9bb55;--bg:#06101d}
+body{background:#06101d}
+.header{background:rgba(5,14,27,.96);border-bottom-color:rgba(255,255,255,.12)}
+.hero{min-height:690px;grid-template-columns:1fr .9fr;gap:7%;padding-top:78px;background:radial-gradient(ellipse at 80% 48%,rgba(24,94,125,.35),transparent 36%),linear-gradient(120deg,#06101d 0%,#0b1d2b 56%,#102e38 100%)}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,14,27,.08),transparent 55%),url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.12'/%3E%3C/svg%3E");opacity:.18;pointer-events:none}
+.hero-copy{max-width:610px}
+.hero h1{font-size:clamp(64px,7.6vw,108px);letter-spacing:-.025em}
+.hero h1 em{color:#f0c968;text-shadow:none}
+.lead{font-size:15px;color:#d2dce7;max-width:490px}
+.button.gold{background:#edc66d;box-shadow:0 10px 30px rgba(237,198,109,.15)}
+.hero-art{height:490px;outline:0;border:1px solid rgba(255,255,255,.25);box-shadow:22px 22px 0 rgba(233,187,85,.13),0 35px 80px rgba(0,0,0,.3)}
+.hero-art img{filter:saturate(1.08) contrast(1.08);transform:scale(1.015)}
+.art-overlay{background:linear-gradient(0deg,rgba(3,10,18,.94),rgba(3,10,18,.03) 58%),linear-gradient(135deg,rgba(6,34,48,.05),rgba(6,34,48,.2))}
+.art-caption{padding:26px 25px}
+.art-caption b{font-size:clamp(25px,3vw,36px);line-height:1.05;display:block;max-width:300px}
+.gold-rule{width:88px;height:4px}
+.hero-stats{max-width:510px;gap:0;justify-content:space-between}
+.hero-stats div{padding-right:17px}
+.hero-stats b{font-size:21px;color:#f0c968}
+.hero-stats span{font-size:9px}
+.hero-footer{background:rgba(3,10,18,.45);backdrop-filter:blur(8px)}
+.brands{background:#f1f0eb;color:#17252b}
+.brands .section-head{border-color:rgba(23,37,43,.18)}
+.brands .section-head>p{color:#56636a}
+.brands .section-head h2{color:#17252b}
+.brands .section-head h2 em{color:#8d6726}
+.brands .eyebrow{color:#8d6726}
+.brand-grid{gap:22px}
+.brand-card{min-height:610px;padding:29px 29px 235px;border:1px solid rgba(13,30,43,.13);box-shadow:0 12px 35px rgba(15,27,37,.07);background:#fff}
+.brand-card:after{background:linear-gradient(135deg,var(--tint),transparent 54%)}
+.brand-card .category{font-size:9px;letter-spacing:.16em}
+.brand-card h3{font-size:clamp(37px,4vw,53px);letter-spacing:.025em;margin:5px 0 10px}
+.brand-card .tagline{font-size:22px;line-height:1.25}
+.brand-card .description{font-size:12px;line-height:1.8;color:#475762;max-width:390px}
+.brand-card ul{padding-left:17px;color:#475762;font-size:10px;line-height:2}
+.brand-card .card-link{color:#1d2b35;font-size:10px;font-weight:700}
+.brand-card .card-image{height:205px;bottom:0;left:0;right:0;position:absolute;overflow:hidden;border-top:1px solid rgba(12,24,34,.1)}
+.brand-card .card-image img{filter:saturate(1.1) contrast(1.04);transition:transform .7s cubic-bezier(.2,.7,.2,1),filter .4s}
+.brand-card:hover .card-image img{transform:scale(1.06);filter:saturate(1.22) contrast(1.05)}
+.brand-card .card-image:after{background:linear-gradient(0deg,rgba(3,10,18,.18),transparent 45%)}
+.brand-card.skyline{--accent:#9a6b22;--tint:rgba(222,174,88,.14);background:linear-gradient(145deg,#fffefa,#f4eee2)}
+.brand-card.scholars{--accent:#2c5a9b;--tint:rgba(67,117,184,.12);background:linear-gradient(145deg,#fff,#edf3fb)}
+.brand-card.nexora-tech{--accent:#087e98;--tint:rgba(16,177,205,.11);background:linear-gradient(145deg,#fff,#eaf6f7)}
+.brand-card.tekdid{--accent:#087c63;--tint:rgba(0,166,125,.1);background:linear-gradient(145deg,#fff,#eaf5f0)}
+.brand-card .brand-symbol{background:#fff;border-color:color-mix(in srgb,var(--accent),transparent 68%);box-shadow:0 6px 20px rgba(13,30,43,.06)}
+.brand-card .brand-number{color:#65737b}
+.brand-card .risk-note{position:relative;z-index:2;color:#55646c;font-size:9px;margin:9px 0 0}
+.about{background:#0b1a27;color:#f6f4ee}
+.about-visual{outline:0;box-shadow:18px 18px 0 rgba(233,187,85,.12)}
+.about-visual img{filter:saturate(1.06) contrast(1.06)}
+.about-visual span{background:rgba(5,14,25,.8);padding:12px 15px;backdrop-filter:blur(10px)}
+.about-copy h2 em,.contact h2 em{color:#edc66d}
+.values{background:#0d2230;border-top:1px solid rgba(255,255,255,.1);border-bottom:1px solid rgba(255,255,255,.1)}
+.value-row>div{padding:18px 20px;border-left:1px solid rgba(255,255,255,.14)}
+.value-row>div b{color:#edc66d}
+.contact{background:linear-gradient(130deg,#07131f,#102b35);color:#f8f7f2}
+.contact-links>a{border-bottom-color:rgba(255,255,255,.15)}
+.contact-links>a:hover{background:rgba(237,198,109,.07);padding-left:12px}
+.contact-note{color:#c3d0d9}
+.footer{background:#040b13}
+@media(max-width:850px){.hero{min-height:0;grid-template-columns:1fr 1fr;gap:5%;padding:58px 6vw 76px}.hero-art{height:390px}.hero h1{font-size:clamp(58px,7vw,82px)}.brand-card{padding-left:22px;padding-right:22px;min-height:620px}}
+@media(max-width:620px){.hero{display:flex;flex-direction:column;align-items:stretch;gap:34px;padding:48px 22px 78px}.hero h1{font-size:clamp(60px,15vw,86px)}.hero-art{height:340px;margin:0 5px 7px}.hero-stats{gap:14px;flex-wrap:wrap}.hero-stats b{font-size:18px}.hero-stats span{font-size:8px}.hero-footer{gap:10px;font-size:7px;letter-spacing:.1em}.brands{padding-top:70px}.brand-grid{grid-template-columns:1fr}.brand-card{min-height:585px;padding:23px 22px 225px}.brand-card .card-image{height:195px}.section-head{display:block}.section-head>p{margin-top:18px}.about-visual{min-height:300px}.value-row>div{padding:15px 12px}}
+@media(prefers-reduced-motion:reduce){.brand-card .card-image img{transition:none}}
