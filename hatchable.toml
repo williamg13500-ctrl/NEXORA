@@ -1,6 +1,0 @@
-[[config]]
-name = "nexora_shared_config"
-type = "string"
-label = "NEXORA GROUP shared configuration JSON"
-help = "Shared contact details, platform destinations and feature flags. Do not store secrets here."
-required = false
