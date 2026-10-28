@@ -1,13 +1,2 @@
-import { config } from 'hatchable';
-export const access = 'public';
-export const methods = ['GET'];
-export default async function (req, res) {
-  const [emailAddress, location] = await Promise.all([
-    config.get('public_business_email'),
-    config.get('business_location')
-  ]);
-  return res.json({
-    email: typeof emailAddress === 'string' ? emailAddress.trim() : '',
-    location: typeof location === 'string' ? location.trim() : ''
-  });
-}
+export const access='public';export const methods=['GET'];
+export default async function(req,res){return res.json({contact:{displayPhone:'+1 332 777 3936',telPhone:'+13327773936',whatsappBase:'https://wa.me/13327773936',location:''},features:{adminInbox:true,tracking:true,platformPulse:false,tekdidLive:false},platforms:{scholars:{name:'SCHOLARS UNIVERSITY',domain:'https://aischolarhub.online',status:'Live'},tekdid:{name:'TEKDiD',domain:'https://tekdid.xyz',status:'Coming soon',gated:true},skyline:{name:'SKYLINE Architecture & Design',domain:'',status:'Coming soon'},'nexora-technologies':{name:'NEXORA TECHNOLOGIES',domain:'',status:'Coming soon'}}});}
