@@ -1,0 +1,7 @@
+/* Single source of truth for NEXORA GROUP platform destinations and status. */
+window.NEXORA_PLATFORMS={tekdidLive:false,brands:[
+{id:"skyline",name:"SKYLINE Architecture & Design",shortName:"SKYLINE",purpose:"Architecture, interiors and visualisation for more thoughtful spaces.",domain:"",logo:"/logos/skyline.svg",logoAlt:"SKYLINE logo",learnMore:"/skyline.html",contact:"/?brand=SKYLINE%20Architecture%20%26%20Design#contact",category:"Architecture & design"},
+{id:"scholars",name:"SCHOLARS UNIVERSITY",shortName:"SCHOLARS UNIVERSITY",purpose:"Online learning, courses and skills development.",domain:"https://aischolarhub.online",logo:"/logos/scholars-wolf.jpg",logoAlt:"SCHOLARS UNIVERSITY wolf emblem",learnMore:"/scholars.html",contact:"/?brand=SCHOLARS%20UNIVERSITY#contact",category:"Learning"},
+{id:"nexora-technologies",name:"NEXORA TECHNOLOGIES",shortName:"NEXORA TECHNOLOGIES",purpose:"Websites, software, IT services and digital automation.",domain:"",logo:"/logos/nexora-technologies.svg",logoAlt:"NEXORA TECHNOLOGIES logo",learnMore:"/nexora-technologies.html",contact:"/?brand=NEXORA%20TECHNOLOGIES#contact",category:"Software & IT"},
+{id:"tekdid",name:"TEKDiD",shortName:"TEKDiD",purpose:"Trading technology and workflows designed with risk in view.",domain:"https://tekdid.xyz",logo:"/logos/tekdid.svg",logoAlt:"TEKDiD logo",learnMore:"/tekdid.html",contact:"/?brand=TEKDiD%20Forex%20Trading%20Technology#contact",category:"Forex trading technology",gated:true}
+]};
