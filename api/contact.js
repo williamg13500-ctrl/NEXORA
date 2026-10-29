@@ -4,7 +4,7 @@ export const methods = ['POST'];
 const clean=(v,n)=>typeof v==='string'?v.trim().slice(0,n):'';
 const brands=new Set(['SKYLINE Architecture & Design','SCHOLARS UNIVERSITY','NEXORA TECHNOLOGIES','TEKDiD Forex Trading Technology','NEXORA GROUP / Not sure yet']);
 async function hash(v){const d=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(v));return Array.from(new Uint8Array(d),b=>b.toString(16).padStart(2,'0')).join('');}
-function ref(){const chars='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';let s='NX-';for(let i=0;i<5;i++)s+=chars[Math.floor(Math.random()*chars.length)];return s;}
+function ref(){const chars='ABCDEFGHJKLMNPQRSTUVWXYZ23456789',bytes=new Uint8Array(5);crypto.getRandomValues(bytes);let s='NX-';for(let i=0;i<bytes.length;i++)s+=chars[bytes[i]%chars.length];return s;}
 export default async function(req,res){
  try{
   const b=req.body&&typeof req.body==='object'?req.body:{};

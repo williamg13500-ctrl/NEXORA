@@ -1,0 +1,1 @@
+CREATE INDEX IF NOT EXISTS idx_enquiry_audit_enquiry_time ON enquiry_audit (enquiry_id, created_at DESC);
