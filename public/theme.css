@@ -80,6 +80,27 @@ body{font-family:var(--sans);background:#080f18;letter-spacing:-.008em}
 .about .eyebrow{color:#dfc68e!important}
 .about-copy>p:not(.eyebrow){color:#c4cbd0!important}
 .about .button.outline{color:#e0c68a!important;border-color:#cbb17a}
+/* Refinement v52: keep card content present even if reveal JavaScript or observers fail. */
+.brands .brand-card,.brands .brand-card[data-reveal],.brands .brand-card.is-visible{opacity:1!important;transform:none!important;animation:none!important;transition:box-shadow .25s ease,background .25s ease!important}
+.brands .brand-card .card-top{min-height:48px;align-items:center}
+.brands .brand-card .brand-symbol{width:64px;height:56px;padding:4px;background:transparent;border:0;box-shadow:none;display:grid;place-items:center;flex:0 0 auto}
+.brands .brand-card .brand-symbol img{width:100%;height:100%;object-fit:contain;padding:0;filter:none}
+.brands .brand-card .brand-symbol.scholars-symbol{width:108px;height:72px;padding:0}
+.brands .brand-card.skyline .brand-symbol{width:72px;height:58px}
+.brands .brand-card.nexora-tech .brand-symbol{width:70px;height:58px}
+.brands .brand-card.tekdid .brand-symbol{width:74px;height:58px}
+.brands .brand-number.status-label{display:inline-flex;align-items:center;justify-content:center;max-width:calc(100% - 90px);min-height:27px;padding:6px 9px;border:1px solid rgba(129,105,60,.34);background:#f2ecdf;color:#68532e;font-size:9px;font-weight:700;letter-spacing:.08em;text-align:center;line-height:1.25}
+.brands .brand-number.status-live{background:#e5eee5;color:#285a3d;border-color:#b8cfbc}
+.brands .brand-number.status-gated{background:#f3e7d8;color:#6d3d20;border-color:#d9b89a}
+.brands .brand-card .description{font-size:13px;line-height:1.65;max-width:440px;margin-bottom:18px}
+.brands .brand-card .card-actions{padding-top:0;margin-top:auto}
+.brands .brand-card .primary-card-link{min-height:43px;align-items:center}
+.brands .brand-card .card-image img{object-position:center 50%}
+.brands .brand-card .skyline-scene img{object-position:center 56%}
+.brands .brand-card .scholars-scene img{object-position:center 44%}
+@media(max-width:850px){.brands .brand-card{padding-top:274px;padding-bottom:24px}.brands .brand-card .card-image{height:248px}}
+@media(max-width:560px){.brands .brand-card{padding-top:258px;padding-left:22px;padding-right:22px}.brands .brand-card .card-image{height:232px}.brands .brand-card .brand-symbol{width:58px;height:52px}.brands .brand-card .brand-symbol.scholars-symbol{width:94px;height:63px}.brands .brand-card .brand-number.status-label{font-size:8px;letter-spacing:.04em;padding:5px 7px}.brands .brand-card .description{font-size:13px;line-height:1.65}.brands .brand-card .primary-card-link{width:100%;justify-content:space-between}}
+@media(prefers-reduced-motion:reduce){.brands .brand-card,.brands .brand-card[data-reveal]{opacity:1!important;transform:none!important;animation:none!important;transition:none!important}}
 .proof .section-head>p{color:#414b44!important}
 .process-grid article>span{color:#71572b!important}
 .process-grid article h3{color:#28312b!important}
