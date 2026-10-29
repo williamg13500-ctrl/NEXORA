@@ -1,0 +1,20 @@
+NEXORA GROUP — CINEMATIC MEDIA BRIEFS
+Global art direction. Do not imply a country, city, client, built project, campus, trading result, or testimonial that has not been verified. Preserve each supplied logo as a separate, original overlay; do not ask a generation model to redraw or typeset logos.
+
+GLOBAL GROUP HERO — 6–8 seconds, 16:9 (deliver 1920×1080 master and 1280×720 web version)
+A premium global business group expressed through abstract architectural light, glass, brushed metal, fine gold highlights and deep navy. International, location-neutral art direction; no flags, identifiable skylines, readable text, UI copy, people, or logos. Realistic volumetric light, deliberate centered framing with clear negative space on the left for headline copy. Very slow lateral dolly and gentle parallax only; seamless loop with no abrupt exposure or focus change. Static fallback: existing group hero artwork. Separate NEXORA GROUP logo overlay in HTML.
+
+SKYLINE — 5–7 seconds, 16:9
+Conceptual architectural study: contemporary geometry, material samples, daylight moving across a neutral model, fine technical linework, warm stone, glass and restrained gold. No recognizable landmark, no claim to depict a completed client project. Slow push-in; balanced highlights; keep right half visually calm for text. Static fallback: /media/architecture-poster.svg. Separate SKYLINE logo overlay.
+
+SCHOLARS UNIVERSITY — 5–7 seconds, 16:9
+Conceptual digital-learning environment: softly lit desk, open blank notebook, abstract glowing knowledge nodes and deep navy with subtle blue/gold accents. No identifiable campus, students, certificates, grades, readable text, or accreditation symbols. Gentle tilt and focus shift, no rapid particles. Static fallback: /media/learning-poster.svg. Clearly label the artwork conceptual, not a campus photograph. Separate official wolf emblem overlay.
+
+NEXORA TECHNOLOGIES — 5–7 seconds, 16:9
+Abstract systems engineering: clean data pathways, translucent layered panels, precise grid, subtle cyan edge light and navy negative space. No fabricated dashboard figures, client logos, security badges, or readable interface claims. Slow parallax across three layers; restrained highlights. Static fallback: use a neutral procedural systems illustration. Separate NEXORA TECHNOLOGIES logo overlay.
+
+TEKDiD — 5–6 seconds, 16:9
+Abstract risk-monitoring visual with calm orbital lines, muted teal, navy, small gold signals and steady camera. No real market chart, financial metric, broker logo, profits, rising-arrow promise, or predictive claim. Keep risk disclosure visually prominent and unchanged. Static fallback: current procedural TEKDiD illustration. Separate TEKDiD logo overlay.
+
+WEB DELIVERY REQUIREMENTS
+Export H.264 MP4 (baseline/main profile, yuv420p) and optional WebM; 24 fps; muted; target 1–2 MB for 6 seconds at 720p where quality permits, hard ceiling 3 MB; no audio track. Provide a WebP/AVIF poster at 1280×720 and a 640×360 fallback. Do not ship a video until its rights, factual implications, visual quality and byte size are checked. Lazy-load only when near viewport, pause offscreen, allow only one scene to play at a time, and never autoplay when prefers-reduced-motion or Save-Data/slow connection is active. Keep original logos as HTML overlays. No generation job has been submitted by this brief.
