@@ -45,3 +45,7 @@ body.skyline .statement{background:linear-gradient(90deg,rgba(8,17,20,.94),rgba(
 body.scholars .statement{background:linear-gradient(90deg,rgba(8,17,32,.93),rgba(8,17,32,.76)),url("https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=1800&q=82") center 48%/cover no-repeat!important}
 body.nexora-tech .statement{background:linear-gradient(90deg,rgba(7,14,21,.94),rgba(7,14,21,.78)),url("https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1800&q=82") center 48%/cover no-repeat!important}
 body.tekdid .statement{background:linear-gradient(90deg,rgba(6,17,16,.94),rgba(6,17,16,.78)),url("https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1800&q=82") center 48%/cover no-repeat!important}
+/* Contrast refinements after live axe review */
+body.skyline .mini-logo small{color:#c7cbc4!important}
+.intro .eyebrow,.section-heading .eyebrow,.contact .eyebrow{color:#71572b!important}
+.disclaimer{color:#433d32!important;background:#e5ded1!important;border-color:#8b744b!important}

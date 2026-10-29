@@ -73,3 +73,15 @@ body{font-family:var(--sans);background:#080f18;letter-spacing:-.008em}
 @media(max-width:850px){.hero.hero-immersive{min-height:680px;padding:100px 7vw 120px}.hero-immersive h1{font-size:clamp(52px,8.5vw,80px)}.hero-image-caption{right:24px;bottom:84px}.section-head{gap:24px}.brand-card{padding:284px 24px 25px}.brand-card .card-image{height:252px}.brand-grid{gap:18px}}
 @media(max-width:560px){.header{padding:9px 16px;min-height:70px}.nav{font-size:15px}.hero.hero-immersive{min-height:700px;padding:88px 23px 130px;align-items:flex-start}.hero-photo{object-position:58% center}.hero-shade{background:linear-gradient(90deg,rgba(5,10,16,.88),rgba(5,10,16,.5)),linear-gradient(0deg,rgba(5,10,16,.84),transparent 65%)}.hero-immersive .eyebrow{font-size:9px;letter-spacing:.12em;margin-bottom:23px}.hero-immersive h1{font-size:clamp(47px,12vw,66px);line-height:1.04;letter-spacing:-.06em}.hero-immersive .lead{font-size:15px;line-height:1.75;margin:22px 0 26px}.hero-immersive .actions{align-items:stretch;flex-direction:column;max-width:330px}.hero-immersive .button{width:100%;justify-content:space-between;min-height:52px}.hero-signature{margin-top:28px;font-size:9px}.hero-image-caption{display:none}.hero-footer{justify-content:flex-start;gap:9px;overflow-x:auto;white-space:nowrap;font-size:7px;letter-spacing:.09em;padding:14px 10px}.hero-footer i{width:3px;height:3px}.section{padding:66px 20px}.section-head{display:block;margin-bottom:26px;padding-bottom:24px}.section-head h2{font-size:43px}.section-head>p{font-size:13px;margin-top:20px}.brand-grid{grid-template-columns:minmax(0,1fr);gap:18px}.brand-card{padding:268px 22px 25px}.brand-card .card-image{height:238px}.brand-card .description{font-size:13px}.brand-card ul{gap:7px 14px}.brand-card ul li{font-size:11px}.brand-card .card-actions{width:100%}.brand-card .card-link{flex:1 1 auto}.brand-card h3{font-size:32px}}
 @media(prefers-reduced-motion:reduce){.brand-card,.brand-card .card-image img{transition:none!important}.brand-card:hover{transform:none}.brand-card:hover .card-image img{transform:none}}
+/* Contrast refinements after live axe review */
+.brands .eyebrow,.proof .eyebrow{color:#71572b!important}
+.section-head h2 em,.about h2 em,.contact h2 em{color:#735728}
+.section-head>p{color:#414b44}
+.about .eyebrow{color:#dfc68e!important}
+.about-copy>p:not(.eyebrow){color:#c4cbd0!important}
+.about .button.outline{color:#e0c68a!important;border-color:#cbb17a}
+.proof .section-head>p{color:#414b44!important}
+.process-grid article>span{color:#71572b!important}
+.process-grid article h3{color:#28312b!important}
+.process-grid article p{color:#414b44!important}
+.submit-button:disabled{opacity:1!important;background:#cbb17a!important;color:#111820!important;border-color:#cbb17a!important}
