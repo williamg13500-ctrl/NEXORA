@@ -140,7 +140,7 @@ body{font-family:var(--sans);background:#080f18;letter-spacing:-.008em}
 .contact-intro>p:not(.eyebrow){color:#d9e1e8}
 .hero-image-caption{color:#fff!important;text-shadow:0 1px 8px rgba(0,0,0,.9)}
 .hero-image-caption small,.hero-image-caption span{color:#fff!important}
-.hero-image-caption small{background:rgba(3,11,28,.78);padding:4px 7px}
+.hero-image-caption small,.hero-image-caption span{background:rgba(3,11,28,.86);padding:4px 7px;border-radius:2px}
 .contact-form .field,.finder label,.request-form form label,.request-grid label{display:flex;flex-direction:column;align-items:stretch;gap:7px;min-width:0;font-size:12px;font-weight:650;line-height:1.45}
 .contact-form input:not([type=checkbox]),.contact-form select,.contact-form textarea,.finder select,.request-form input:not([type=checkbox]),.request-form select,.request-form textarea{display:block;width:100%;min-width:0;min-height:48px;height:48px;padding:12px 13px;border:1px solid var(--form-line);border-radius:3px;background:#fff;color:var(--form-ink);font:500 14px/1.4 var(--sans);box-shadow:none;appearance:auto}
 .contact-form textarea,.request-form textarea{height:auto;min-height:132px;resize:vertical}
