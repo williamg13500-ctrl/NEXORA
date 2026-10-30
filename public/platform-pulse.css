@@ -1,12 +1,12 @@
 /* Honest platform status chips shared by the public hub and gateway. */
 .status-wrap{display:flex;flex-direction:column;align-items:flex-end;gap:3px;min-width:0;max-width:100%}.platform-card .status-wrap{align-self:flex-start;align-items:flex-start}.platform-card .status-checked{text-align:left}.status-checked,.status-override-message{display:block;margin-top:5px;font-size:9px;line-height:1.45;letter-spacing:0;color:#59666e;text-align:left;font-weight:500;text-transform:none}
 .status-override-message{font-weight:700;color:#7c4a08;overflow-wrap:anywhere}
-.platform-status.pulse-online,.brand-number.status-label.pulse-online{background:#dff4e9;color:#145c3d;border-color:#a8d8bd}
-.platform-status.pulse-slow,.brand-number.status-label.pulse-slow{background:#fff0d6;color:#7c4a08;border-color:#e4c58c}
-.platform-status.pulse-offline,.brand-number.status-label.pulse-offline{background:#fce7e7;color:#8b2020;border-color:#e6b0b0}
-.platform-status.pulse-unknown,.brand-number.status-label.pulse-unknown{background:#e9edf0;color:#43535c;border-color:#c7d0d5}
-.platform-status.pulse-coming_soon,.brand-number.status-label.pulse-coming_soon{background:#fff0d6;color:#7c4a08;border-color:#e4c58c}
-.platform-status.pulse-gated,.brand-number.status-label.pulse-gated{background:#f3e7d8;color:#6d3d20;border-color:#d9b89a}
+.platform-status.pulse-online,.status-label.pulse-online{background:#dff4e9;color:#145c3d;border-color:#a8d8bd}
+.platform-status.pulse-slow,.status-label.pulse-slow{background:#fff0d6;color:#7c4a08;border-color:#e4c58c}
+.platform-status.pulse-offline,.status-label.pulse-offline{background:#fce7e7;color:#8b2020;border-color:#e6b0b0}
+.platform-status.pulse-unknown,.status-label.pulse-unknown{background:#e9edf0;color:#43535c;border-color:#c7d0d5}
+.platform-status.pulse-coming_soon,.status-label.pulse-coming_soon{background:#fff0d6;color:#7c4a08;border-color:#e4c58c}
+.platform-status.pulse-gated,.status-label.pulse-gated{background:#f3e7d8;color:#6d3d20;border-color:#d9b89a}
 .brand-card .status-checked{position:relative;z-index:2;max-width:100%;text-align:right}
 .platform-card .status-checked{align-self:flex-start}
 @media(max-width:560px){.brand-card .status-checked{text-align:right;max-width:170px}}

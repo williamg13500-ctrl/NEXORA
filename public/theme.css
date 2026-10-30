@@ -89,7 +89,7 @@ body{font-family:var(--sans);background:#080f18;letter-spacing:-.008em}
 .brands .brand-card.skyline .brand-symbol{width:72px;height:58px}
 .brands .brand-card.nexora-tech .brand-symbol{width:70px;height:58px}
 .brands .brand-card.tekdid .brand-symbol{width:74px;height:58px}
-.brands .brand-number.status-label{display:inline-flex;align-items:center;justify-content:center;max-width:calc(100% - 90px);min-height:27px;padding:6px 9px;border:1px solid rgba(129,105,60,.34);background:#f2ecdf;color:#68532e;font-size:9px;font-weight:700;letter-spacing:.08em;text-align:center;line-height:1.25}
+.brands .status-label{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;width:max-content;max-width:100%;min-width:max-content;min-height:28px;padding:6px 10px;border:1px solid rgba(129,105,60,.34);border-radius:2px;background:#f2ecdf;color:#68532e;font-size:9px;font-weight:700;letter-spacing:.045em;text-align:center;line-height:1.25;white-space:nowrap;flex:0 0 auto}
 .brands .brand-number.status-live{background:#e5eee5;color:#285a3d;border-color:#b8cfbc}
 .brands .brand-number.status-gated{background:#f3e7d8;color:#6d3d20;border-color:#d9b89a}
 .brands .brand-card .description{font-size:13px;line-height:1.65;max-width:440px;margin-bottom:18px}
@@ -147,7 +147,7 @@ body{font-family:var(--sans);background:#080f18;letter-spacing:-.008em}
 .contact-form input::placeholder,.request-form input::placeholder,.contact-form textarea::placeholder{color:#59676d;opacity:1}
 .contact-form input:focus-visible,.contact-form select:focus-visible,.contact-form textarea:focus-visible,.finder select:focus-visible,.request-form input:focus-visible,.request-form select:focus-visible,.request-form textarea:focus-visible{outline:3px solid #f0c968;outline-offset:2px;border-color:#73520f}
 .contact-form .field-help{font-size:11px;color:#d2dce4;line-height:1.55}
-.contact-form .optional{color:#53616a;font-weight:500}
+.contact-form .optional{color:#d2dce4!important;font-weight:500;opacity:1}
 .contact-form .phone-entry{display:block;width:100%}
 .contact-form .consent,.request-form .consent{display:flex;flex-direction:row;align-items:flex-start;gap:10px;line-height:1.55;font-size:12px;font-weight:500}
 .contact-form .consent input,.request-form .consent input{flex:0 0 20px;width:20px;height:20px;min-height:20px;margin:2px 0 0;accent-color:#b68a2c}
@@ -160,9 +160,9 @@ body{font-family:var(--sans);background:#080f18;letter-spacing:-.008em}
 .form-disclosure[open]>summary{border-bottom:1px solid rgba(21,43,53,.18)}
 .form-disclosure-body{padding:clamp(16px,3vw,30px)}.finder.section:not(:has(details[open])),.request-form.section:not(:has(details[open])){padding-block:22px}.request-form.section:not(:has(details[open])) h2{font-size:clamp(30px,3.6vw,42px);margin-bottom:0}
 .form-disclosure-body h2{margin-top:4px}
-.brands .brand-number.status-label{width:max-content;max-width:calc(100% - 88px);flex:0 0 auto;white-space:nowrap;overflow:visible;text-overflow:clip;word-break:normal;overflow-wrap:normal;line-height:1.2;padding:7px 10px;letter-spacing:.045em;font-size:10px}
+.brands .brand-card .status-wrap{display:flex;flex:0 0 auto;align-items:flex-end;width:max-content;max-width:calc(100% - 72px);min-width:0;overflow:visible}.brands .brand-card .status-label{width:max-content;max-width:100%;min-width:max-content;flex:0 0 auto;white-space:nowrap;overflow:visible;text-overflow:clip;word-break:normal;overflow-wrap:normal;line-height:1.2;padding:7px 10px;letter-spacing:.045em;font-size:10px}
 .brands .status-checked{display:none!important}
 .brands .brand-card.tekdid .description{font-weight:600;color:#3b4640}
 .availability-link{display:inline-flex;align-items:center;min-height:40px;padding:8px 0;color:#5f4b23;font-size:11px;font-weight:700;text-decoration:underline;text-underline-offset:4px}.consultation-cta{background:#f1eee6;color:#17252b;text-align:center}.consultation-cta .eyebrow{color:#71572b}.consultation-cta h2{font:600 clamp(38px,4.8vw,58px)/1.05 var(--display);margin:0 0 16px}.consultation-cta>p:not(.eyebrow){max-width:620px;margin:0 auto 22px;color:#414b44}.consultation-cta .button{margin-inline:auto}
-@media(max-width:560px){.contact-form input:not([type=checkbox]),.contact-form select,.contact-form textarea,.finder select,.request-form input:not([type=checkbox]),.request-form select,.request-form textarea{font-size:16px}.contact-form .field-wide{grid-column:1/-1}.brands .brand-number.status-label{max-width:calc(100% - 84px);font-size:9px;padding:6px 8px;letter-spacing:.025em}.form-disclosure-body{padding:16px}}
+@media(max-width:560px){.contact-form input:not([type=checkbox]),.contact-form select,.contact-form textarea,.finder select,.request-form input:not([type=checkbox]),.request-form select,.request-form textarea{font-size:16px}.contact-form .field-wide{grid-column:1/-1}.brands .brand-card .status-wrap{max-width:calc(100% - 78px)}.brands .brand-card .status-label{max-width:100%;min-width:max-content;font-size:9px;padding:6px 8px;letter-spacing:.025em}.form-disclosure-body{padding:16px}}
 @media(prefers-reduced-motion:reduce){.form-disclosure *{scroll-behavior:auto;transition:none!important}}
