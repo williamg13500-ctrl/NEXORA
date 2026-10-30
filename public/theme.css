@@ -131,3 +131,38 @@ body{font-family:var(--sans);background:#080f18;letter-spacing:-.008em}
 .brands .brand-card.nexora-tech .card-image img{object-position:center 48%}
 .brands .brand-card.tekdid .card-image img{object-position:center 50%}
 @media(max-width:560px){.brands .brand-card.skyline .brand-symbol{width:70px;height:58px}.brands .brand-card.scholars .brand-symbol.scholars-symbol{width:92px;height:62px}.brands .brand-card.nexora-tech .brand-symbol{width:74px;height:58px}.brands .brand-card.tekdid .brand-symbol{width:76px;height:58px}.brands .brand-card.skyline .card-image img{object-position:57% 50%}.brands .brand-card.scholars .card-image img{object-position:54% 46%}.brands .brand-card.nexora-tech .card-image img{object-position:55% 50%}.brands .brand-card.tekdid .card-image img{object-position:52% 50%}}
+/* Editorial form system: shared widths, predictable control sizing, readable contrast and visible focus. */
+:root{--form-ink:#152b35;--form-paper:#f5f2e9;--form-line:#9aa7a8;--form-focus:#73520f}
+.contact.section,.finder.section,.request-form.section{width:100%;}
+.contact-form,.finder>details,.request-form>details{width:min(100%,1040px);margin-inline:auto}
+.contact.section{background:#071426;color:#f6f4ed}
+.contact h2 em{color:#f1d99b!important}
+.contact-intro>p:not(.eyebrow){color:#d9e1e8}
+.hero-image-caption{color:#fff!important;text-shadow:0 1px 8px rgba(0,0,0,.9)}
+.hero-image-caption small,.hero-image-caption span{color:#fff!important}
+.hero-image-caption small{background:rgba(3,11,28,.78);padding:4px 7px}
+.contact-form .field,.finder label,.request-form form label,.request-grid label{display:flex;flex-direction:column;align-items:stretch;gap:7px;min-width:0;font-size:12px;font-weight:650;line-height:1.45}
+.contact-form input:not([type=checkbox]),.contact-form select,.contact-form textarea,.finder select,.request-form input:not([type=checkbox]),.request-form select,.request-form textarea{display:block;width:100%;min-width:0;min-height:48px;height:48px;padding:12px 13px;border:1px solid var(--form-line);border-radius:3px;background:#fff;color:var(--form-ink);font:500 14px/1.4 var(--sans);box-shadow:none;appearance:auto}
+.contact-form textarea,.request-form textarea{height:auto;min-height:132px;resize:vertical}
+.contact-form input::placeholder,.request-form input::placeholder,.contact-form textarea::placeholder{color:#59676d;opacity:1}
+.contact-form input:focus-visible,.contact-form select:focus-visible,.contact-form textarea:focus-visible,.finder select:focus-visible,.request-form input:focus-visible,.request-form select:focus-visible,.request-form textarea:focus-visible{outline:3px solid #f0c968;outline-offset:2px;border-color:#73520f}
+.contact-form .field-help{font-size:11px;color:#d2dce4;line-height:1.55}
+.contact-form .optional{color:#53616a;font-weight:500}
+.contact-form .phone-entry{display:block;width:100%}
+.contact-form .consent,.request-form .consent{display:flex;flex-direction:row;align-items:flex-start;gap:10px;line-height:1.55;font-size:12px;font-weight:500}
+.contact-form .consent input,.request-form .consent input{flex:0 0 20px;width:20px;height:20px;min-height:20px;margin:2px 0 0;accent-color:#b68a2c}
+.contact-form .button,.request-form .button,.finder .button{min-height:48px;padding:13px 18px;font:700 12px/1.25 var(--sans);border-radius:2px}
+.contact-form .form-status,.request-form .request-message{max-width:100%;overflow-wrap:anywhere;line-height:1.65}
+.contact-form .form-status.error,.request-message.error{color:#ffe1d9}
+.contact-form .form-status.success,.request-message.success{color:#d6f3dc}
+.form-disclosure{border:1px solid rgba(21,43,53,.28);background:rgba(255,255,255,.55);color:#152b35}
+.form-disclosure>summary{padding:15px 18px;cursor:pointer;font-size:13px;font-weight:700;list-style-position:inside}
+.form-disclosure[open]>summary{border-bottom:1px solid rgba(21,43,53,.18)}
+.form-disclosure-body{padding:clamp(16px,3vw,30px)}.finder.section:not(:has(details[open])),.request-form.section:not(:has(details[open])){padding-block:22px}.request-form.section:not(:has(details[open])) h2{font-size:clamp(30px,3.6vw,42px);margin-bottom:0}
+.form-disclosure-body h2{margin-top:4px}
+.brands .brand-number.status-label{width:max-content;max-width:calc(100% - 88px);flex:0 0 auto;white-space:nowrap;overflow:visible;text-overflow:clip;word-break:normal;overflow-wrap:normal;line-height:1.2;padding:7px 10px;letter-spacing:.045em;font-size:10px}
+.brands .status-checked{display:none!important}
+.brands .brand-card.tekdid .description{font-weight:600;color:#3b4640}
+.availability-link{display:inline-flex;align-items:center;min-height:40px;padding:8px 0;color:#5f4b23;font-size:11px;font-weight:700;text-decoration:underline;text-underline-offset:4px}.consultation-cta{background:#f1eee6;color:#17252b;text-align:center}.consultation-cta .eyebrow{color:#71572b}.consultation-cta h2{font:600 clamp(38px,4.8vw,58px)/1.05 var(--display);margin:0 0 16px}.consultation-cta>p:not(.eyebrow){max-width:620px;margin:0 auto 22px;color:#414b44}.consultation-cta .button{margin-inline:auto}
+@media(max-width:560px){.contact-form input:not([type=checkbox]),.contact-form select,.contact-form textarea,.finder select,.request-form input:not([type=checkbox]),.request-form select,.request-form textarea{font-size:16px}.contact-form .field-wide{grid-column:1/-1}.brands .brand-number.status-label{max-width:calc(100% - 84px);font-size:9px;padding:6px 8px;letter-spacing:.025em}.form-disclosure-body{padding:16px}}
+@media(prefers-reduced-motion:reduce){.form-disclosure *{scroll-behavior:auto;transition:none!important}}

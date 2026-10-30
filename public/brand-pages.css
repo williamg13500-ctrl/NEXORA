@@ -55,3 +55,13 @@ body.scholars .hero-image img{object-position:center 42%}
 body.nexora-tech .hero-image img{object-position:center 48%}
 body.tekdid .hero-image img{object-position:center 50%}
 @media(max-width:560px){body.skyline .hero-image img{object-position:57% center}body.scholars .hero-image img{object-position:50% 40%}body.nexora-tech .hero-image img{object-position:54% center}body.tekdid .hero-image img{object-position:52% center}}
+/* Shared editorial form styling for the relocated SKYLINE consultation journey. */
+.request-form{max-width:1040px;margin:0 auto;padding:clamp(24px,5vw,56px);background:rgba(9,24,46,.78);border:1px solid var(--line);color:var(--ink)}
+.request-form .eyebrow{color:#f1d99b}.request-form h2{font:600 clamp(38px,4.8vw,58px)/1.05 var(--display);margin:0 0 26px;color:#f8f6ef}
+.request-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.request-grid label{display:flex;flex-direction:column;align-items:stretch;gap:7px;min-width:0;font-size:12px;font-weight:650;line-height:1.45}
+.request-grid input:not([type=checkbox]),.request-grid select,.request-grid textarea{display:block;width:100%;min-width:0;min-height:48px;height:48px;padding:12px 13px;border:1px solid #9aa7a8;border-radius:3px;background:#fff;color:#152b35;font:500 14px/1.4 var(--sans)}
+.request-grid textarea{height:auto;min-height:132px;resize:vertical}.request-grid input::placeholder{color:#59676d;opacity:1}
+.request-grid input:focus-visible,.request-grid select:focus-visible,.request-grid textarea:focus-visible{outline:3px solid #f0c968;outline-offset:2px;border-color:#73520f}
+.request-form .consent{display:flex;gap:10px;align-items:flex-start;margin:18px 0;font-size:12px;line-height:1.55}.request-form .consent input{flex:0 0 20px;width:20px;height:20px;min-height:20px;margin:2px 0 0;accent-color:#b68a2c}
+.request-form .button{min-height:48px;padding:13px 18px;font:700 12px/1.25 var(--sans);border-radius:2px}.request-message{white-space:pre-wrap;overflow-wrap:anywhere;font-weight:600;line-height:1.65;margin-top:12px}
+@media(max-width:560px){.request-form{padding:22px 18px;margin:0 14px}.request-grid{grid-template-columns:minmax(0,1fr)}.request-grid input:not([type=checkbox]),.request-grid select,.request-grid textarea{font-size:16px}}
