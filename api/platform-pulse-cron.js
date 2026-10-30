@@ -1,67 +1,22 @@
 import { db } from 'hatchable';
+import { claimCheck, checkOne } from '../lib/platform-check.js';
 export const access = 'scheduler';
 export const methods = ['POST'];
 export const schedule = '0 * * * *';
-
-function safeTarget(value) {
-  let u;
-  try { u = new URL(String(value || '')); } catch { return null; }
-  const host = u.hostname.toLowerCase().replace(/\.$/, '');
-  if (u.protocol !== 'https:' || u.username || u.password || (u.port && u.port !== '443')) return null;
-  if (!host.includes('.') || host === 'localhost' || host.endsWith('.localhost') || host.endsWith('.local') || host.endsWith('.internal')) return null;
-  if (/^(\d{1,3}\.){3}\d{1,3}$/.test(host) || host.includes(':') || host === '0.0.0.0') return null;
-  return u;
-}
-async function checkOne(platform) {
-  const target = safeTarget(platform.domain);
-  if (!target) {
-    const error = 'Check skipped: platform domain must be a public HTTPS hostname.';
-    await db.query("INSERT INTO platform_checks(platform_id,status,response_ms,http_status,error,detail,checked_at) VALUES($1,'unknown',NULL,NULL,$2,$2,now())", [platform.id,error]);
-    return { platformId: platform.id, status: 'unknown', error };
-  }
-  const started = Date.now();
-  let status = 'unknown', httpStatus = null, error = null, detail = '';
-  try {
-    const response = await fetch(target.toString(), {
-      method: 'GET',
-      redirect: 'manual',
-      cache: 'no-store',
-      headers: { 'user-agent': 'NEXORA-Platform-Pulse/1.0', 'accept': 'text/html,application/xhtml+xml,*/*;q=0.8' },
-      signal: AbortSignal.timeout(8000)
-    });
-    const elapsed = Date.now() - started;
-    httpStatus = response.status;
-    if (httpStatus >= 200 && httpStatus <= 399) {
-      status = elapsed > 3000 ? 'slow' : 'online';
-      detail = httpStatus >= 300 ? 'HTTP redirect response' : 'HTTP success response';
-    } else if (httpStatus >= 500) {
-      status = 'offline';
-      error = 'HTTP ' + httpStatus + ' server error';
-      detail = error;
-    } else {
-      status = 'unknown';
-      error = 'Unexpected HTTP ' + httpStatus + '; not treated as online.';
-      detail = error;
-    }
-    try { await response.body?.cancel(); } catch {}
-    await db.query('INSERT INTO platform_checks(platform_id,status,response_ms,http_status,error,detail,checked_at) VALUES($1,$2,$3,$4,$5,$6,now())', [platform.id,status,elapsed,httpStatus,error,detail]);
-    return { platformId: platform.id, status, responseMs: elapsed, httpStatus, error };
-  } catch (e) {
-    const elapsed = Date.now() - started;
-    error = String(e?.name === 'TimeoutError' || e?.name === 'AbortError' ? 'Request timed out after 8 seconds.' : (e?.message || 'Network or DNS request failed.')).slice(0,500);
-    status = 'offline';
-    detail = error;
-    await db.query('INSERT INTO platform_checks(platform_id,status,response_ms,http_status,error,detail,checked_at) VALUES($1,$2,$3,NULL,$4,$5,now())', [platform.id,status,elapsed,error,detail]);
-    return { platformId: platform.id, status, responseMs: elapsed, httpStatus: null, error };
-  }
-}
 export default async function(req,res) {
  try {
-   const targets = await db.query("SELECT id,domain FROM platforms WHERE status='live' AND is_gated=false AND domain<>'' ORDER BY id");
+   const targets = await db.query("SELECT p.id,p.domain,pc.checked_at FROM platforms p LEFT JOIN LATERAL (SELECT checked_at FROM platform_checks WHERE platform_id=p.id ORDER BY checked_at DESC,id DESC LIMIT 1) pc ON true WHERE p.status='live' AND p.is_gated=false AND p.domain<>'' ORDER BY p.id");
    const results = [];
-   for (const platform of targets.rows) results.push(await checkOne(platform));
+   for (const platform of targets.rows) {
+     if (platform.checked_at && Date.now()-new Date(platform.checked_at).getTime() < 5*60*1000) { results.push({platformId:platform.id,skipped:true,reason:'A check was recorded within the last 5 minutes.'}); continue; }
+     let claimed = false;
+     try { claimed = await claimCheck(platform.id); } catch (e) { console.error('Could not claim platform check',platform.id,e?.message||e); results.push({platformId:platform.id,skipped:true,reason:'Could not claim check safely.'}); continue; }
+     if (!claimed) { results.push({platformId:platform.id,skipped:true,reason:'A check attempt was claimed within the last 5 minutes.'}); continue; }
+     try { results.push(await checkOne(platform, { timeoutMs: 8000 })); }
+     catch (e) { results.push({ platformId: platform.id, status: 'unknown', error: 'Check result could not be stored.' }); console.error('Platform check failed for', platform.id, e?.message || e); }
+   }
    const pruned = await db.query("DELETE FROM platform_checks WHERE checked_at < now() - interval '30 days'");
-   return res.json({ ok:true, checked:results.length, results, pruned:Number(pruned?.rowCount ?? pruned?.changes ?? 0), interval:'hourly' });
+   return res.json({ ok:true, checked:results.filter(r=>!r.skipped).length, skipped:results.filter(r=>r.skipped).length, results, pruned:Number(pruned?.rowCount ?? pruned?.changes ?? 0), interval:'hourly' });
  } catch(e) {
    console.error('Platform pulse cron failed', e?.message || e);
    return res.status(500).json({ error:'Platform pulse check failed.' });

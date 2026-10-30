@@ -3,7 +3,7 @@ const labels={online:'Online',slow:'Slow',offline:'Offline',unknown:'Unknown',co
 const stateUrl='/api/cinematic-state';
 let lastFetch=0,inFlight=false,timer=null;
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-function ageLabel(value){if(!value)return 'Never checked';const t=new Date(value).getTime();if(!Number.isFinite(t))return 'Check time unavailable';const mins=Math.max(0,Math.floor((Date.now()-t)/60000));if(mins<1)return 'Checked less than 1 min ago';return 'Checked '+mins+' min ago'}
+function ageLabel(value){if(!value)return 'Never checked';const d=new Date(value),t=d.getTime();if(!Number.isFinite(t))return 'Check time unavailable';const at=d.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}),mins=Math.max(0,Math.floor((Date.now()-t)/60000)),age=mins<1?'less than 1 min ago':mins+' min ago';return 'Checked '+at+' · '+age}
 function renderChip(el,data){
  const pulse=data?.pulse||'unknown';el.textContent=labels[pulse]||'Unknown';el.className=(el.classList.contains('platform-status')?'platform-status':'brand-number status-label')+' pulse-'+pulse;
  el.setAttribute('aria-label','Platform status: '+(labels[pulse]||'Unknown'));
