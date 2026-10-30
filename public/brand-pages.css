@@ -49,3 +49,9 @@ body.tekdid .statement{background:linear-gradient(90deg,rgba(6,17,16,.94),rgba(6
 body.skyline .mini-logo small{color:#c7cbc4!important}
 .intro .eyebrow,.section-heading .eyebrow,.contact .eyebrow{color:#71572b!important}
 .disclaimer{color:#433d32!important;background:#e5ded1!important;border-color:#8b744b!important}
+/* Responsive focal points for the distinct editorial photographs. */
+body.skyline .hero-image img{object-position:center 52%}
+body.scholars .hero-image img{object-position:center 42%}
+body.nexora-tech .hero-image img{object-position:center 48%}
+body.tekdid .hero-image img{object-position:center 50%}
+@media(max-width:560px){body.skyline .hero-image img{object-position:57% center}body.scholars .hero-image img{object-position:50% 40%}body.nexora-tech .hero-image img{object-position:54% center}body.tekdid .hero-image img{object-position:52% center}}
