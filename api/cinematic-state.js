@@ -19,16 +19,23 @@ export default async function(req,res){
    await db.query('INSERT INTO cinematic_settings(setting_key,setting_value,updated_at) VALUES($1,$2::jsonb,now()) ON CONFLICT(setting_key) DO UPDATE SET setting_value=EXCLUDED.setting_value,updated_at=now()',[key,JSON.stringify(value)]);
    return res.json({ok:true,key,value});
   }
-  const [p,s]=await Promise.all([db.query('SELECT id,status,is_gated FROM platforms'),db.query('SELECT setting_key,setting_value FROM cinematic_settings')]);
+  res.setHeader('Cache-Control','no-store');
+  const [p,s]=await Promise.all([
+   db.query("SELECT p.id,p.status,p.domain,p.is_gated,p.override_message,pc.status AS check_status,pc.response_ms,pc.checked_at FROM platforms p LEFT JOIN LATERAL (SELECT status,response_ms,checked_at FROM platform_checks WHERE platform_id=p.id ORDER BY checked_at DESC,id DESC LIMIT 1) pc ON true ORDER BY p.id"),
+   db.query('SELECT setting_key,setting_value FROM cinematic_settings')
+  ]);
   const platforms={};
   for(const row of p.rows){
-   let pulse='coming_soon';
-   if(row.is_gated||row.status==='coming_soon')pulse='coming_soon';
+   const ageMs=row.checked_at?Math.max(0,Date.now()-new Date(row.checked_at).getTime()):null;
+   const fresh=ageMs!==null&&Number.isFinite(ageMs)&&ageMs<=15*60*1000;
+   let pulse='unknown';
+   if(row.is_gated)pulse='gated';
+   else if(row.status==='coming_soon')pulse='coming_soon';
    else if(row.status==='maintenance')pulse='slow';
-   else if(row.status==='live')pulse='online';
-   platforms[row.id]={status:row.status,pulse,gated:row.is_gated};
+   else if(row.status==='live'&&fresh&&['online','slow','offline'].includes(row.check_status))pulse=row.check_status;
+   platforms[row.id]={status:row.status,domain:row.domain||'',pulse,gated:row.is_gated===true,lastCheckedAt:row.checked_at||null,responseMs:row.response_ms===null?null:Number(row.response_ms),overrideMessage:row.override_message||'',checkStatus:row.check_status||null,checkIsFresh:fresh};
   }
   const settings={};for(const row of s.rows)settings[row.setting_key]=row.setting_value;
-  return res.json({platforms,settings,pulseSource:'platform_registry',updatedAt:new Date().toISOString()});
+  return res.json({platforms,settings,pulseSource:'platform_checks',freshnessMinutes:15,updatedAt:new Date().toISOString()});
  }catch(e){console.error('Cinematic state error',e?.message||e);return res.status(500).json({error:'Cinematic state unavailable.'});}
 }
