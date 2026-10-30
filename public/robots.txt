@@ -1,3 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /admin.html
+Disallow: /__page/admin
 Sitemap: https://nexora-group-website.hatchable.site/sitemap.xml

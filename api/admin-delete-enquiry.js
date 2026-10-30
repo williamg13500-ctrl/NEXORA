@@ -1,0 +1,3 @@
+import { db } from 'hatchable';
+export const access='admin'; export const methods=['DELETE'];
+export default async function(req,res){try{const id=Number(req.body?.id??req.query?.id);if(!Number.isSafeInteger(id)||id<1)return res.status(400).json({error:'Valid enquiry id required.'});const r=await db.query('DELETE FROM enquiries WHERE id=$1 RETURNING id',[id]);if(!r.rows.length)return res.status(404).json({error:'Enquiry not found.'});return res.json({ok:true,deletedId:id})}catch(e){console.error('Enquiry deletion failed',e?.message||e);return res.status(500).json({error:'Could not delete enquiry.'})}}

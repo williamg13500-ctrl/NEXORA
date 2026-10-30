@@ -2,17 +2,4 @@ import { db } from 'hatchable';
 export const access = 'public';
 export const methods = ['GET'];
 async function hash(v){const d=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(v));return Array.from(new Uint8Array(d),b=>b.toString(16).padStart(2,'0')).join('');}
-export default async function(req,res){
- const ref=String(req.query?.ref||'').trim().toUpperCase().slice(0,12);
- if(!/^NX-[A-HJ-NP-Z2-9]{5}$/.test(ref))return res.status(400).json({error:'Enter a valid reference code.'});
- try{
-  const forwarded=req.headers['x-forwarded-for']||req.headers['cf-connecting-ip']||req.headers['x-real-ip']||'anonymous';
-  const ipHash=await hash(String(forwarded).split(',')[0].trim()||'anonymous');
-  const rate=await db.query("SELECT count(*)::int AS total FROM track_lookup_limits WHERE ip_hash=$1 AND created_at>now()-interval '1 hour'",[ipHash]);
-  if(Number(rate.rows?.[0]?.total||0)>=20)return res.status(429).json({error:'Too many lookups. Please wait before trying again.'});
-  await db.query('INSERT INTO track_lookup_limits(ip_hash) VALUES($1)',[ipHash]);
-  const r=await db.query("SELECT reference_code,status,public_note,created_at,updated_at FROM enquiries WHERE reference_code=$1",[ref]);
-  if(!r.rows.length)return res.status(404).json({error:'No enquiry was found for that reference code.'});
-  return res.json({enquiry:r.rows[0]});
- }catch(e){return res.status(500).json({error:'Tracking is temporarily unavailable.'});}
-}
+export default async function(req,res){const ref=String(req.query?.ref||'').trim().toUpperCase().slice(0,12);if(!/^(NX-[A-HJ-NP-Z2-9]{5}|WL-[A-HJ-NP-Z2-9]{5}|BK-[A-HJ-NP-Z2-9]{5})$/.test(ref))return res.status(400).json({error:'Enter a valid reference code.'});try{const forwarded=req.headers['x-forwarded-for']||req.headers['cf-connecting-ip']||req.headers['x-real-ip']||'anonymous';const ipHash=await hash(String(forwarded).split(',')[0].trim()||'anonymous');const rate=await db.query("SELECT count(*)::int AS total FROM track_lookup_limits WHERE ip_hash=$1 AND created_at>now()-interval '1 hour'",[ipHash]);if(Number(rate.rows?.[0]?.total||0)>=20)return res.status(429).json({error:'Too many lookups. Please wait before trying again.'});await db.query('INSERT INTO track_lookup_limits(ip_hash) VALUES($1)',[ipHash]);const r=await db.query('SELECT reference_code,status,created_at FROM enquiries WHERE reference_code=$1 UNION ALL SELECT reference_code,status,created_at FROM waitlist WHERE reference_code=$1 UNION ALL SELECT reference_code,status,created_at FROM bookings WHERE reference_code=$1 LIMIT 1',[ref]);if(!r.rows.length)return res.status(404).json({error:'No request was found for that reference code.'});return res.json({request:r.rows[0]})}catch(e){return res.status(500).json({error:'Tracking is temporarily unavailable.'})}}
