@@ -4,11 +4,11 @@ Scope: existing project only. Preserve approved photographic design, brand ident
 
 ## Current project and access
 - Project ID: proj_8UDp9uV0ceRt
-- Current version after the final TEKDiD card-renderer repair: v78 (planned deployment 2026-10-31); baseline before review edits was v74 (live at 2026-10-31T09:18:28Z).
+- Current version: v79 (final private pre-launch review record, deployed 2026-10-31); baseline before review edits was v74 (live at 2026-10-31T09:18:28Z).
 - Project tier reported by Hatchable: personal; owner role.
 - Privacy verification: PASSED in a clean managed-Chromium session with no cookies on 2026-10-31. The bare project URL displayed “Sign in to continue to NEXORA GROUP Website” and “This site is private”; no site content was served. Hatchable also reports visibility=personal and sign-in wall on every path, including /api/*. A preview URL is a temporary verification bypass, not a privacy control.
 - Do not change visibility to public without explicit owner launch approval.
-- Rollback path: Hatchable console → History/Deployments → v77 (previous gated deployment). Do not roll back to v74 without a reviewed reason; it predates the TEKDiD gate and tracking privacy repair.
+- Rollback path: Hatchable console → History/Deployments → v78 (previous gated deployment with the final TEKDiD updates-only card renderer). Do not roll back to v74 without a reviewed reason; it predates the TEKDiD gate and tracking privacy repair.
 
 ## TEKDiD claim register — separate site not controlled here
 Inspected https://tekdid.xyz/ homepage content on 2026-10-31 using live extraction; it identifies itself as “TEKDID — AI Forex Trading Bot Platform”.
@@ -25,7 +25,7 @@ Inspected https://tekdid.xyz/ homepage content on 2026-10-31 using live extracti
   Ticker replacement: remove it until a reliable live-data integration is verified. If an honest state is necessary: “Market data unavailable — live feed not verified.”
 - Separate-site limitation: no verified Hatchable project ID or editing access for tekdid.xyz was available; its content has NOT been changed by this review.
 
-## NEXORA-controlled content changes prepared
+## NEXORA-controlled content changes implemented (v75–v78)
 - Set TEKDiD registry to coming_soon + gated=true, with updates-only override message.
 - Replaced the NEXORA hub's TEKDiD direct-open CTA with updates-only contact CTA and a nearby risk notice.
 - Removed TEKDiD feature/positioning sections pending evidence; updated metadata and hero/contact copy to state pre-launch, updates-only, no platform access/deposits.
@@ -35,6 +35,13 @@ Inspected https://tekdid.xyz/ homepage content on 2026-10-31 using live extracti
 - Deployed in v76/v77: tracking API returns only status + public_note; tracking UI displays the reference from the entered code and status/public update, with no timestamps/private notes. Post-deploy tests confirmed private_notes, phone, email, name and created_at are not returned.
 - Existing NEXORA GROUP and NEXORA TECHNOLOGIES SVG logo files are present. Original source assets were not separately supplied in the accessible project context, so their provenance/visual match to the approved originals remains unverified. Do not redraw; request the original SVG/AI/PDF/PNG brand files for comparison if needed.
 - No team biographies, verified case studies, testimonials, accreditation, customer counts, business email or business location were invented. Team/proof draft components in the hub were already hidden. Preserve verified phone/WhatsApp contact +1 332 777 3936.
+
+## Browser, mobile and accessibility evidence
+- Managed Chromium mobile emulation at 390×844: document width 390px; no horizontal overflow. TEKDiD updates details opened from the CTA; brand preselected as TEKDiD; zero visible direct links to tekdid.xyz; adjacent risk notice visible.
+- Managed Chromium desktop emulation at 1440×1000: document width 1440px; no horizontal overflow. Platforms page displayed TEKDiD as GATED, no direct tekdid.xyz anchor, and a “Request updates only” CTA to the waitlist.
+- Single mobile navigation timing sample: responseStart 99 ms, DOMContentLoaded 364 ms, load 396 ms, first-contentful-paint 288 ms, transferSize 8,531 bytes. Desktop sample: responseStart 22 ms, DOMContentLoaded 387 ms, load 536 ms, transferSize 8,531 bytes. These are single managed-browser samples, not Lighthouse scores or field metrics.
+- Automated DOM checks: required waitlist controls detected, TEKDiD preselection passed, invalid non-international phone produced the expected validation message without a reference code, all form controls had associated labels, zero images lacked alt attributes, and a skip link was present. Navigation opened/closed with a click and a synthetic Escape event; real keyboard key input could not be tested because the browser proxy's documented `page.press` method failed. Screen-reader and physical-phone testing remain Not tested.
+- Screenshot objects saved in project storage under `prelaunch/v76-mobile-home.png`, `prelaunch/v76-tekdid-mobile.png`, and `prelaunch/v78-platforms-desktop.png` (signed preview URLs expire after one hour).
 
 ## Private completion list
 - Obtain verified legal contracting entity, registered address, governing law/jurisdiction, liability/dispute clauses, effective date, data controller, lawful bases, data retention/deletion schedule, deletion identity verification and any mandatory jurisdictional disclosures. Qualified counsel must approve final privacy/terms pages.
