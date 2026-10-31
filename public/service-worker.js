@@ -1,0 +1,7 @@
+const CACHE='nexora-static-v1';
+const CORE=['/offline.html','/manifest.webmanifest','/icon-192.png','/icon-512.png'];
+const BLOCKED=p=>p.startsWith('/api/')||p==='/admin.html'||p.startsWith('/__page/')||p==='/track'||p.startsWith('/track?');
+const STATIC_EXT=/\.(?:css|js|png|jpe?g|webp|gif|svg|woff2?|ttf|ico|webmanifest)$/i;
+self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(CORE)));self.skipWaiting()});
+self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('nexora-static-')&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
+self.addEventListener('fetch',e=>{const r=e.request;if(r.method!=='GET')return;const u=new URL(r.url);if(u.origin!==self.location.origin||BLOCKED(u.pathname))return;if(r.mode==='navigate'){e.respondWith(fetch(r).catch(async()=>{const c=await caches.open(CACHE);return (await c.match('/offline.html'))||Response.error()}));return}if(!STATIC_EXT.test(u.pathname))return;e.respondWith(caches.open(CACHE).then(async c=>{const hit=await c.match(r);if(hit)return hit;try{const res=await fetch(r);if(res.ok&&res.type==='basic'&&!BLOCKED(u.pathname))c.put(r,res.clone());return res}catch(err){return (await c.match('/offline.html'))||Response.error()}}))});
