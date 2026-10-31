@@ -4,11 +4,11 @@ Scope: existing project only. Preserve approved photographic design, brand ident
 
 ## Current project and access
 - Project ID: proj_8UDp9uV0ceRt
-- Current version: v79 (final private pre-launch review record, deployed 2026-10-31); baseline before review edits was v74 (live at 2026-10-31T09:18:28Z).
+- Current version: v80 (final private pre-launch review record, deployed 2026-10-31); baseline before review edits was v74 (live at 2026-10-31T09:18:28Z).
 - Project tier reported by Hatchable: personal; owner role.
 - Privacy verification: PASSED in a clean managed-Chromium session with no cookies on 2026-10-31. The bare project URL displayed “Sign in to continue to NEXORA GROUP Website” and “This site is private”; no site content was served. Hatchable also reports visibility=personal and sign-in wall on every path, including /api/*. A preview URL is a temporary verification bypass, not a privacy control.
 - Do not change visibility to public without explicit owner launch approval.
-- Rollback path: Hatchable console → History/Deployments → v78 (previous gated deployment with the final TEKDiD updates-only card renderer). Do not roll back to v74 without a reviewed reason; it predates the TEKDiD gate and tracking privacy repair.
+- Rollback path: Hatchable console → History/Deployments → v79 (previous gated deployment with the final TEKDiD updates-only card renderer). Do not roll back to v74 without a reviewed reason; it predates the TEKDiD gate and tracking privacy repair.
 
 ## TEKDiD claim register — separate site not controlled here
 Inspected https://tekdid.xyz/ homepage content on 2026-10-31 using live extraction; it identifies itself as “TEKDID — AI Forex Trading Bot Platform”.
@@ -16,6 +16,10 @@ Inspected https://tekdid.xyz/ homepage content on 2026-10-31 using live extracti
 - $41.2M managed volume — unsupported; remove until reconciled records and definition/time period are supplied.
 - 12,480 active traders — unsupported; remove until verifiable active-user definition and analytics are supplied.
 - 6.3% maximum drawdown — unsupported; remove until audited equity curve, period, calculation method and account scope are supplied.
+- Returns/ROI: no explicit numeric return percentage or ROI claim was visible on the inspected homepage. However, the page promotes running P/L, profit factor, win rate and per-strategy performance, plus claims the AI selects trades and says when there is “no trade worth taking”; no audited evidence or methodology is attached to those claims. Remove/hold until independently verified.
+- Customer numbers: 12,480 active traders is the visible user-count claim; unsupported until the active-user definition and source analytics are supplied.
+- Testimonials/reviews: no testimonial or customer-review section was found in the visible homepage text. Do not invent or add any without evidence and approved consent.
+- Other measurable/operational claims: “every position” streaming with running P/L, ledger-backed balances, immutable trade history, server-enforced risk limits and security controls are stated as existing features, but the page itself does not provide evidence proving implementation or audit status.
 - Market ticker investigation: the live browser showed EUR/USD, GBP/USD and USD/JPY with non-zero changes, while XAU/USD, XAG/USD and multiple crypto symbols displayed 0.00%. The separate site's `MarketTicker` bundle uses `quote.changePct ?? 0` and `quote.price ?? fallbackPrice`, so missing quote data is explicitly rendered as a zero-percent change and a hard-coded fallback price. The main bundle opens a Binance Spot WebSocket for configured crypto symbols and also polls a `quote-snapshot` query every 30 seconds; fallback values are visibly hard-coded (for example XAU/USD 2418.55, XAG/USD 29.418, BTC/USD 63074.04). This is a mixed feed with fallback/zero defaults, not a verified all-instruments live ticker. Forex/metal source and freshness could not be established from the visible code. Remove the ticker or display an honest unavailable state until each instrument has a verified source, timestamp and freshness state.
 - “AI bot” chooses pair/direction/entry/SL/TP/size; “AI engine live”; trade monitor; strategy engine; analytics; explainability; immutable trade history; ledger-backed balances; backend-enforced limits; JWT/TOTP/2FA/email verification/CSRF/rate limiting/encrypted credentials/audit logging; crypto deposits/withdrawal approvals: no independent implementation or security evidence available from this page review. Remove or hold each claim until technical evidence, testing and security review substantiate it.
 - CTAs “Start trading now”, “Create account”, “Sign in”, “Open dashboard”, and crypto-deposit references conflict with the requested pre-launch/gated state. The separate site needs its owner/operator to remove or disable these until authorized.
